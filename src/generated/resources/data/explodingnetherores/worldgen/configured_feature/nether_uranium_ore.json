@@ -1,0 +1,37 @@
+{
+  "type": "explodingnetherores:conditional_ore",
+  "config": {
+    "mods": [
+      "mekanism",
+      "nuclearcraft",
+      "electrodynamics",
+      "ic2",
+      "ic2classic",
+      "ic2nostalgia",
+      "bigreactors",
+      "extremereactors",
+      "biggerreactors",
+      "immersiveengineering"
+    ],
+    "ore": {
+      "discard_chance_on_air_exposure": 0.0,
+      "size": 2,
+      "targets": [
+        {
+          "state": {
+            "Name": "explodingnetherores:nether_uranium_ore"
+          },
+          "target": {
+            "predicate_type": "minecraft:tag_match",
+            "tag": "c:netherracks"
+          }
+        }
+      ]
+    },
+    "tags": [
+      "c:raw_materials/uranium",
+      "c:ingots/uranium",
+      "c:ores/uranium"
+    ]
+  }
+}

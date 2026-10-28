@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "explodingnetherores:block/end_copper_ore"
+  }
+}

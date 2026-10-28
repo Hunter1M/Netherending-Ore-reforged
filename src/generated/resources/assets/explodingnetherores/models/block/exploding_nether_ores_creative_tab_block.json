@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "explodingnetherores:block/exploding_nether_ores_creative_tab_block_north",
+    "east": "explodingnetherores:block/exploding_nether_ores_creative_tab_block_east",
+    "north": "explodingnetherores:block/exploding_nether_ores_creative_tab_block_north",
+    "south": "explodingnetherores:block/exploding_nether_ores_creative_tab_block_south",
+    "up": "explodingnetherores:block/exploding_nether_ores_creative_tab_block_east",
+    "west": "explodingnetherores:block/exploding_nether_ores_creative_tab_block_west"
+  }
+}

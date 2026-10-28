@@ -1,21 +1,25 @@
 package org.icannt.netherendingores.common.block;
 
-import org.icannt.netherendingores.Registration;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.icannt.netherendingores.lib.NeoString;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.registries.RegistryObject;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredItem;
 
 public enum NeoOreBlocks implements IOreType {
 
@@ -83,29 +87,24 @@ public enum NeoOreBlocks implements IOreType {
     NETHER_ZINC_ORE ("zinc", "nether", 0, 1, 3F, 15F, Rarity.COMMON, false, new String[0], "raw_materials", "ingots"),
     END_ZINC_ORE ("zinc", "end", 0, 1, 3F, 15F, Rarity.COMMON, false, new String[0], "raw_materials", "ingots");
 
-	// Enum
+    private static final String COMMON_NAMESPACE = "c";
+
     private final String name;
     private final String oreBaseType;
-
     private final int lightLevel;
     private final int harvestLevel;
     private final float hardness;
     private final float resistance;
     private final Rarity rarity;
-
     private final boolean isVanilla;
     private final String[] oreAltType;
     private final String itemTagMaterial;
     private final String itemTagAltMaterial;
 
-    // Unique
-
-    //private MaterialColor materialColor;
-
-    private RegistryObject<Block> block;
-    private RegistryObject<Item> item;
-	private TagKey<Block> blockTag;
-	private TagKey<Item> itemTag;
+    private DeferredBlock<Block> block;
+    private DeferredItem<BlockItem> item;
+    private TagKey<Block> blockTag;
+    private TagKey<Item> itemTag;
 
     private enum VanillaOres {
 
@@ -120,33 +119,32 @@ public enum NeoOreBlocks implements IOreType {
         ORES_QUARTZ (Tags.Blocks.ORES_QUARTZ, Tags.Items.ORES_QUARTZ, Items.QUARTZ),
         ORES_REDSTONE (Tags.Blocks.ORES_REDSTONE, Tags.Items.ORES_REDSTONE, Items.REDSTONE);
 
-		private TagKey<Block> blockTagKey;
-		private TagKey<Item> itemTagKey;
-		private Item lootItem;
+        private final TagKey<Block> blockTagKey;
+        private final TagKey<Item> itemTagKey;
+        private final Item lootItem;
 
-		VanillaOres(final TagKey<Block> blockTagKey, final TagKey<Item> itemTagKey, final Item lootItem) {
-			this.blockTagKey = blockTagKey;
-			this.itemTagKey = itemTagKey;
-			this.lootItem = lootItem;
-		}
+        VanillaOres(final TagKey<Block> blockTagKey, final TagKey<Item> itemTagKey, final Item lootItem) {
+            this.blockTagKey = blockTagKey;
+            this.itemTagKey = itemTagKey;
+            this.lootItem = lootItem;
+        }
 
-		private static TagKey<Block> getBlockTagKey(String oreType) {
-			return VanillaOres.values()[VanillaOres.valueOf(oreType).ordinal()].blockTagKey;
-		}
+        private static TagKey<Block> getBlockTagKey(String oreType) {
+            return VanillaOres.valueOf(oreType).blockTagKey;
+        }
 
-		private static TagKey<Item> getItemTagKey(String oreType) {
-			return VanillaOres.values()[VanillaOres.valueOf(oreType).ordinal()].itemTagKey;
-		}
+        private static TagKey<Item> getItemTagKey(String oreType) {
+            return VanillaOres.valueOf(oreType).itemTagKey;
+        }
 
-		private static Item getLootItem(String oreType) {
-			return VanillaOres.values()[VanillaOres.valueOf(oreType).ordinal()].lootItem;
-		}
-
+        private static Item getLootItem(String oreType) {
+            return VanillaOres.valueOf(oreType).lootItem;
+        }
     }
 
     NeoOreBlocks(final String name, final String oreBaseType,
-    		int lightLevel, int harvestLevel, float hardness, float resistance, Rarity rarity,
-    	    boolean isVanilla, String[] oreAltType, String itemTagMaterial, final String itemTagAltMaterial) {
+                 int lightLevel, int harvestLevel, float hardness, float resistance, Rarity rarity,
+                 boolean isVanilla, String[] oreAltType, String itemTagMaterial, final String itemTagAltMaterial) {
 
         this.name = name;
         this.oreBaseType = oreBaseType;
@@ -158,10 +156,9 @@ public enum NeoOreBlocks implements IOreType {
         this.rarity = rarity;
 
         this.isVanilla = isVanilla;
-		this.oreAltType = oreAltType;
-		this.itemTagMaterial = itemTagMaterial;
-		this.itemTagAltMaterial = itemTagAltMaterial;
-
+        this.oreAltType = oreAltType;
+        this.itemTagMaterial = itemTagMaterial;
+        this.itemTagAltMaterial = itemTagAltMaterial;
     }
 
     @Override
@@ -170,11 +167,11 @@ public enum NeoOreBlocks implements IOreType {
     }
 
     public String getOreType() {
-    	return this.name;
+        return this.name;
     }
 
     private String getOreBaseType() {
-    	return this.oreBaseType;
+        return this.oreBaseType;
     }
 
     private float getHardness() {
@@ -190,7 +187,7 @@ public enum NeoOreBlocks implements IOreType {
     }
 
     public int getHarvestLevel() {
-    	return this.harvestLevel;
+        return this.harvestLevel;
     }
 
     private Rarity getRarity() {
@@ -198,170 +195,185 @@ public enum NeoOreBlocks implements IOreType {
     }
 
     public boolean isVanilla() {
-    	return this.isVanilla;
+        return this.isVanilla;
+    }
+
+    public boolean isNether() {
+        return "nether".equals(this.oreBaseType);
     }
 
     private String[] getOreAltType() {
-    	return this.oreAltType;
+        return this.oreAltType;
     }
 
     private String getItemTagMaterial() {
-    	return this.itemTagMaterial;
+        return this.itemTagMaterial;
     }
 
     private String getItemTagAltMaterial() {
-    	return this.itemTagAltMaterial;
+        return this.itemTagAltMaterial;
     }
 
-    // Helpers
-
     public TagKey<Block> getToolNeeded() {
-		switch (getHarvestLevel()) {
-			case 2:
-				return BlockTags.NEEDS_IRON_TOOL;
-			case 3:
-				return BlockTags.NEEDS_DIAMOND_TOOL;
-			case 4:
-				return Tags.Blocks.NEEDS_NETHERITE_TOOL;
-		}
-	    return BlockTags.NEEDS_STONE_TOOL;
-	}
+        return switch (getHarvestLevel()) {
+            case 2 -> BlockTags.NEEDS_IRON_TOOL;
+            case 3 -> BlockTags.NEEDS_DIAMOND_TOOL;
+            case 4 -> Tags.Blocks.NEEDS_NETHERITE_TOOL;
+            default -> BlockTags.NEEDS_STONE_TOOL;
+        };
+    }
 
-
-    private RegistryObject<Block> getRegistryBlock() {
+    private DeferredBlock<Block> getRegistryBlock() {
         return this.block;
     }
 
-    private RegistryObject<Item> getRegistryItem() {
+    private DeferredItem<BlockItem> getRegistryItem() {
         return this.item;
     }
 
     public Block getBlock() {
-    	return getRegistryBlock().get();
+        return getRegistryBlock().get();
     }
 
     public Item getItem() {
-    	return getRegistryItem().get();
+        return getRegistryItem().get();
     }
 
     public String getRegistryBlockPath() {
-        return getBlock().getRegistryName().getPath();
+        return getName();
     }
 
     public String getModelLocation() {
-    	return "block/" + getName();
+        return "block/" + getName();
     }
 
     public String getModelLocation(String data) {
-    	return "block/" + getName() + "_" + data;
+        return "block/" + getName() + "_" + data;
     }
 
-    // May be needed for alternate models in the future
-    /*
-    public String getModelLocation(int data) {
-    	return "block/" + getName() + "_" + data;
-    }
-    */
-
-    public void setBlock(RegistryObject<Block> blockRegistryObject, TagKey<Block> blockTagKey) {
+    public void setBlock(DeferredBlock<Block> blockRegistryObject, TagKey<Block> blockTagKey) {
         this.block = blockRegistryObject;
         this.blockTag = blockTagKey;
     }
 
-    public void setItem(RegistryObject<Item> itemRegistryObject, TagKey<Item> itemTagKey) {
+    public void setItem(DeferredItem<BlockItem> itemRegistryObject, TagKey<Item> itemTagKey) {
         this.item = itemRegistryObject;
         this.itemTag = itemTagKey;
     }
 
     public TagKey<Block> getBlockTagKey() {
-    	return this.blockTag;
+        return this.blockTag;
     }
 
     public TagKey<Item> getItemTagKey() {
-    	return this.itemTag;
+        return this.itemTag;
     }
 
-    private MaterialColor getMaterialColor() {
-    	switch(getOreBaseType()) {
-    		case "stone":
-    			return MaterialColor.STONE;
-    		case "deepslate":
-    			return MaterialColor.DEEPSLATE;
-    		case "nether":
-    			return MaterialColor.NETHER;
-    	}
-		return MaterialColor.SAND;
+    private MapColor getMaterialColor() {
+        return switch (getOreBaseType()) {
+            case "deepslate" -> MapColor.DEEPSLATE;
+            case "nether" -> MapColor.NETHER;
+            case "end" -> MapColor.SAND;
+            default -> MapColor.STONE;
+        };
     }
 
     private SoundType getSound() {
-    	switch(getOreBaseType()) {
-    		case "deepslate":
-    			return SoundType.DEEPSLATE;
-    		case "nether":
-    			if (getItemTagMaterial() == "gem") {
-    				return SoundType.NETHER_ORE;
-    			}
-    			return SoundType.NETHER_GOLD_ORE;
-    	}
-    	return SoundType.STONE;
+        return switch (getOreBaseType()) {
+            case "deepslate" -> SoundType.DEEPSLATE;
+            case "nether" -> "gems".equals(getItemTagMaterial()) ? SoundType.NETHER_ORE : SoundType.NETHER_GOLD_ORE;
+            default -> SoundType.STONE;
+        };
     }
 
-    public Block.Properties getBlockProperties() {
-    	return Block.Properties
-    			.of(Material.STONE, getMaterialColor())
-    			.strength(getHardness(), getResistance())
-    			.requiresCorrectToolForDrops()
-    			.lightLevel(blockStateInt -> getLightLevel())
-    			.sound(getSound());
+    public BlockBehaviour.Properties getBlockProperties() {
+        // Nether ores use the classic low blast resistance so their armed
+        // explosions can destroy and chain into adjacent Nether ores.
+        float blastResistance = isNether() ? 1.0F : getResistance();
+        return BlockBehaviour.Properties.of()
+                .mapColor(getMaterialColor())
+                .strength(getHardness(), blastResistance)
+                .requiresCorrectToolForDrops()
+                .lightLevel(state -> getLightLevel())
+                .sound(getSound());
     }
 
     public Item.Properties getItemProperties() {
-    	return new Item.Properties()
-    			.stacksTo(64)
-    			.rarity(getRarity())
-    			.tab(Registration.TAB_NETHERENDING_ORES);
+        return new Item.Properties()
+                .stacksTo(64)
+                .rarity(getRarity());
     }
 
     private String getVanillaOreTagName() {
-    	return "ORES_" + NeoString.toUpper(getOreType());
+        return "ORES_" + NeoString.toUpper(getOreType());
     }
 
-	public TagKey<Block> getForgeOreBlockTag() {
-		if (isVanilla()) {
-			return VanillaOres.getBlockTagKey(getVanillaOreTagName());
-		}
-		return BlockTags.create(new ResourceLocation("forge", "ores/" + getOreType()));
-	}
+    public TagKey<Block> getOreBlockTag() {
+        if (isVanilla()) {
+            return VanillaOres.getBlockTagKey(getVanillaOreTagName());
+        }
+        return BlockTags.create(ResourceLocation.fromNamespaceAndPath(COMMON_NAMESPACE, "ores/" + getOreType()));
+    }
 
-	public TagKey<Item> getForgeOreItemTag() {
-		if (isVanilla()) {
-			return VanillaOres.getItemTagKey(getVanillaOreTagName());
-		}
-		return ItemTags.create(new ResourceLocation("forge", "ores/" + getOreType()));
-	}
+    public TagKey<Item> getOreItemTag() {
+        if (isVanilla()) {
+            return VanillaOres.getItemTagKey(getVanillaOreTagName());
+        }
+        return ItemTags.create(ResourceLocation.fromNamespaceAndPath(COMMON_NAMESPACE, "ores/" + getOreType()));
+    }
 
-	public Item getVanillaLootItem() {
-		return VanillaOres.getLootItem(getVanillaOreTagName());
-	}
+    public Item getVanillaLootItem() {
+        return VanillaOres.getLootItem(getVanillaOreTagName());
+    }
 
-	// Not in active use, would need refinement to actually use.
     public String getSmeltingGroup() {
-    	return getOreType() + "_" + "ingot";
+        return getOreType() + "_" + "ingot";
     }
 
-	public TagKey<Item> getForgeOreLootItemTag() {
-		return ItemTags.create(new ResourceLocation("forge", getItemTagMaterial() + "/" + getOreType()));
-	}
+    public TagKey<Item> getOreLootItemTag() {
+        return getOreLootItemTags().get(0);
+    }
 
-	// Not needed at the moment, may have a future use?
-	public static boolean isNeoOre(String path) {
-		try {
-			NeoOreBlocks.valueOf(NeoString.toUpper(path));
-		}
-		catch(Exception error) {
-			return false;
-		}
-		return true;
-	}
+    /**
+     * Material item tags that can supply this ore's drops. The first tag is the
+     * preferred drop; later tags are compatibility fallbacks such as dusts for
+     * Thermal-style materials, ingots for metals, peridot for green sapphire,
+     * and yellorium for yellorite.
+     */
+    public List<TagKey<Item>> getOreLootItemTags() {
+        if ("green_sapphire".equals(getOreType())) {
+            return List.of(
+                    commonItemTag("gems", "green_sapphire"),
+                    commonItemTag("gems", "peridot")
+            );
+        }
 
+        if ("yellorite".equals(getOreType())) {
+            // Extreme Reactors calls the material yellorium, not yellorite.
+            return List.of(
+                    commonItemTag("raw_materials", "yellorium"),
+                    commonItemTag("ingots", "yellorium")
+            );
+        }
+
+        List<TagKey<Item>> tags = new ArrayList<>();
+        tags.add(commonItemTag(getItemTagMaterial(), getOreType()));
+        if (!getItemTagAltMaterial().isEmpty()) {
+            tags.add(commonItemTag(getItemTagAltMaterial(), getOreType()));
+        }
+        return List.copyOf(tags);
+    }
+
+    private TagKey<Item> commonItemTag(String material, String type) {
+        return ItemTags.create(ResourceLocation.fromNamespaceAndPath(COMMON_NAMESPACE, material + "/" + type));
+    }
+
+    public static boolean isNeoOre(String path) {
+        try {
+            NeoOreBlocks.valueOf(NeoString.toUpper(path));
+        } catch (Exception error) {
+            return false;
+        }
+        return true;
+    }
 }

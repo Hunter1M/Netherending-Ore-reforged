@@ -1,0 +1,30 @@
+{
+  "type": "explodingnetherores:conditional_ore",
+  "config": {
+    "mods": [
+      "projectred_core",
+      "projectred_exploration"
+    ],
+    "ore": {
+      "discard_chance_on_air_exposure": 0.0,
+      "size": 3,
+      "targets": [
+        {
+          "state": {
+            "Name": "explodingnetherores:nether_green_sapphire_ore"
+          },
+          "target": {
+            "predicate_type": "minecraft:tag_match",
+            "tag": "c:netherracks"
+          }
+        }
+      ]
+    },
+    "tags": [
+      "c:gems/green_sapphire",
+      "c:gems/peridot",
+      "c:ores/green_sapphire",
+      "c:ores/peridot"
+    ]
+  }
+}

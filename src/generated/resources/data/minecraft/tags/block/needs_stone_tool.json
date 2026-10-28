@@ -1,0 +1,16 @@
+{
+  "values": [
+    "explodingnetherores:nether_copper_ore",
+    "explodingnetherores:end_copper_ore",
+    "explodingnetherores:nether_iron_ore",
+    "explodingnetherores:end_iron_ore",
+    "explodingnetherores:nether_lapis_ore",
+    "explodingnetherores:end_lapis_ore",
+    "explodingnetherores:nether_redstone_ore",
+    "explodingnetherores:end_redstone_ore",
+    "explodingnetherores:nether_tin_ore",
+    "explodingnetherores:end_tin_ore",
+    "explodingnetherores:nether_zinc_ore",
+    "explodingnetherores:end_zinc_ore"
+  ]
+}

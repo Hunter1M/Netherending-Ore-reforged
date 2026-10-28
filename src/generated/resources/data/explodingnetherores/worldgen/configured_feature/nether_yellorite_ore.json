@@ -1,0 +1,30 @@
+{
+  "type": "explodingnetherores:conditional_ore",
+  "config": {
+    "mods": [
+      "bigreactors",
+      "extremereactors",
+      "biggerreactors"
+    ],
+    "ore": {
+      "discard_chance_on_air_exposure": 0.0,
+      "size": 2,
+      "targets": [
+        {
+          "state": {
+            "Name": "explodingnetherores:nether_yellorite_ore"
+          },
+          "target": {
+            "predicate_type": "minecraft:tag_match",
+            "tag": "c:netherracks"
+          }
+        }
+      ]
+    },
+    "tags": [
+      "c:raw_materials/yellorium",
+      "c:ingots/yellorium",
+      "c:ores/yellorite"
+    ]
+  }
+}

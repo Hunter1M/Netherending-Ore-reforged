@@ -1,0 +1,33 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#c:is_nether",
+  "features": [
+    "explodingnetherores:nether_coal_ore",
+    "explodingnetherores:nether_copper_ore",
+    "explodingnetherores:nether_diamond_ore",
+    "explodingnetherores:nether_emerald_ore",
+    "explodingnetherores:nether_iron_ore",
+    "explodingnetherores:nether_lapis_ore",
+    "explodingnetherores:nether_redstone_ore",
+    "explodingnetherores:nether_lead_ore",
+    "explodingnetherores:nether_nickel_ore",
+    "explodingnetherores:nether_osmium_ore",
+    "explodingnetherores:nether_ruby_ore",
+    "explodingnetherores:nether_sapphire_ore",
+    "explodingnetherores:nether_silver_ore",
+    "explodingnetherores:nether_tin_ore",
+    "explodingnetherores:nether_uranium_ore",
+    "explodingnetherores:nether_yellorite_ore",
+    "explodingnetherores:nether_zinc_ore",
+    "explodingnetherores:nether_amethyst_ore",
+    "explodingnetherores:nether_apatite_ore",
+    "explodingnetherores:nether_cinnabar_ore",
+    "explodingnetherores:nether_fluorite_ore",
+    "explodingnetherores:nether_green_sapphire_ore",
+    "explodingnetherores:nether_niter_ore",
+    "explodingnetherores:nether_sulfur_ore",
+    "explodingnetherores:nether_teslatite_ore",
+    "explodingnetherores:nether_tungsten_ore"
+  ],
+  "step": "underground_ores"
+}

@@ -1,0 +1,28 @@
+{
+  "type": "explodingnetherores:conditional_ore",
+  "config": {
+    "mods": [
+      "mekanism"
+    ],
+    "ore": {
+      "discard_chance_on_air_exposure": 0.0,
+      "size": 7,
+      "targets": [
+        {
+          "state": {
+            "Name": "explodingnetherores:nether_osmium_ore"
+          },
+          "target": {
+            "predicate_type": "minecraft:tag_match",
+            "tag": "c:netherracks"
+          }
+        }
+      ]
+    },
+    "tags": [
+      "c:raw_materials/osmium",
+      "c:ingots/osmium",
+      "c:ores/osmium"
+    ]
+  }
+}

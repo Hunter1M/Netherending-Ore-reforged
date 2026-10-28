@@ -1,0 +1,33 @@
+{
+  "type": "explodingnetherores:conditional_ore",
+  "config": {
+    "mods": [
+      "mekanism",
+      "nuclearcraft",
+      "electrodynamics",
+      "thermal",
+      "thermal_foundation",
+      "thermalfoundation"
+    ],
+    "ore": {
+      "discard_chance_on_air_exposure": 0.0,
+      "size": 4,
+      "targets": [
+        {
+          "state": {
+            "Name": "explodingnetherores:nether_sulfur_ore"
+          },
+          "target": {
+            "predicate_type": "minecraft:tag_match",
+            "tag": "c:netherracks"
+          }
+        }
+      ]
+    },
+    "tags": [
+      "c:gems/sulfur",
+      "c:dusts/sulfur",
+      "c:ores/sulfur"
+    ]
+  }
+}

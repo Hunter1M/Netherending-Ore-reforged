@@ -1,0 +1,36 @@
+{
+  "type": "explodingnetherores:conditional_ore",
+  "config": {
+    "mods": [
+      "mekanism",
+      "nuclearcraft",
+      "electrodynamics",
+      "ic2",
+      "ic2classic",
+      "ic2nostalgia",
+      "thermal",
+      "thermal_foundation",
+      "thermalfoundation"
+    ],
+    "ore": {
+      "discard_chance_on_air_exposure": 0.0,
+      "size": 8,
+      "targets": [
+        {
+          "state": {
+            "Name": "explodingnetherores:nether_tin_ore"
+          },
+          "target": {
+            "predicate_type": "minecraft:tag_match",
+            "tag": "c:netherracks"
+          }
+        }
+      ]
+    },
+    "tags": [
+      "c:raw_materials/tin",
+      "c:ingots/tin",
+      "c:ores/tin"
+    ]
+  }
+}

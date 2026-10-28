@@ -1,32 +1,41 @@
 package org.icannt.netherendingores.datagen;
 
-import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
 
 import org.icannt.netherendingores.NetherendingOres;
+import org.icannt.netherendingores.Registration;
 import org.icannt.netherendingores.common.block.NeoOreBlocks;
+import org.jetbrains.annotations.Nullable;
 
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.tags.BlockTagsProvider;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.data.BlockTagsProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class NeoBlockTags extends BlockTagsProvider {
 
-    public NeoBlockTags(DataGenerator generator, @Nullable ExistingFileHelper helper) {
-        super(generator, NetherendingOres.MOD_ID, helper);
+    public NeoBlockTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper helper) {
+        super(output, lookupProvider, NetherendingOres.MOD_ID, helper);
     }
 
     @Override
-    protected void addTags() {
-    	for (NeoOreBlocks ore : NeoOreBlocks.values()) {
+    protected void addTags(HolderLookup.Provider provider) {
+        for (NeoOreBlocks ore : NeoOreBlocks.values()) {
             tag(Tags.Blocks.ORES).add(ore.getBlock());
-            tag(ore.getForgeOreBlockTag()).add(ore.getBlock());
+            tag(ore.getOreBlockTag()).add(ore.getBlock());
             tag(ore.getBlockTagKey()).add(ore.getBlock());
+            if (ore.isNether()) {
+                tag(Tags.Blocks.ORES_IN_GROUND_NETHERRACK).add(ore.getBlock());
+            }
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ore.getBlock());
             if (ore.getHarvestLevel() > 0) {
-            	tag(ore.getToolNeeded()).add(ore.getBlock());
+                tag(ore.getToolNeeded()).add(ore.getBlock());
             }
         }
+
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(Registration.EXPLODING_NETHER_ORES_CREATIVE_TAB_BLOCK.get());
     }
+
 }

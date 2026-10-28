@@ -1,0 +1,24 @@
+{
+  "type": "explodingnetherores:conditional_ore",
+  "config": {
+    "ore": {
+      "discard_chance_on_air_exposure": 0.0,
+      "size": 4,
+      "targets": [
+        {
+          "state": {
+            "Name": "explodingnetherores:nether_teslatite_ore"
+          },
+          "target": {
+            "predicate_type": "minecraft:tag_match",
+            "tag": "c:netherracks"
+          }
+        }
+      ]
+    },
+    "tags": [
+      "c:dusts/teslatite",
+      "c:ores/teslatite"
+    ]
+  }
+}

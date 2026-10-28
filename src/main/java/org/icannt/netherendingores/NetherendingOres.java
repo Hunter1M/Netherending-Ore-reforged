@@ -1,18 +1,16 @@
 package org.icannt.netherendingores;
 
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
 
 @Mod(NetherendingOres.MOD_ID)
-public class NetherendingOres
-{
-    public static final String MOD_ID = "netherendingores";
-    public static final String MOD_NAME = "Netherending Ores";
-    public static final IEventBus EVENT_BUS = FMLJavaModLoadingContext.get().getModEventBus();
+public class NetherendingOres {
 
-    public NetherendingOres() {
-        Registration.init();
+    public static final String MOD_ID = "explodingnetherores";
+    public static final String MOD_NAME = "Exploding Nether Ores Reforged";
+
+    public NetherendingOres(IEventBus modEventBus) {
+        Registration.init(modEventBus);
     }
 
 }

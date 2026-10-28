@@ -1,61 +1,81 @@
-<img src="https://media.forgecdn.net/attachments/281/607/2020-03-14_16.png" alt="Version 1.4 Content" width="2560" height="1440" />
-<p><span style="font-size: 18px;"><strong>Overview</strong></span><br /></span>
-<span style="font-size: 14px;">Yet another mod that adds ores and furnace conversion recipes to the Nether and the End.<br /></span>
-<span style="font-size: 14px;">Version 1.4+ Features:<br /></span>
+<h1>Exploding Nether Ores Reforged (1.21.1) (ALPHA WIP)</h1>
+<p><strong>High-risk, high-reward ore generation in the Nether with smart mod integration!</strong></p>
+<p>Exploding Nether Ores Reforged brings rich ore deposits into the Nether while keeping you on your toes with hazard mechanics. Built for modern Minecraft 1.21.1 on NeoForge, this mod generates native Nether versions of vanilla and modded ores, featuring both modded and vanilla ores, custom explosion hazards, and piglin aggravation just as it did in 1.8 Minecraft, perfect for a Tekkit-flavoured mod pack.</p>
+
+<h2>Features &amp; Mechanics</h2>
+
+<h3>Native Nether Ore Generation</h3>
 <ul>
-<li>Exploding ores</li>
-<li>Netherfish mob</li>
-<li>Monster eggs for the Netherfish and Endermite</li>
-<li>Ores can now drop items, including experience</li>
-<li>Ores can now be smelted direct to items, including experience</li>
-<li>Rewritten config</li>
+    <li><strong>Nether Generation:</strong> All vanilla ores are supported.</li>
+    <li><strong>Modded Generation:</strong> Mekanism, Create, Extreme Reactors, NuclearCraft, Electrodynamics, Industrial Craft 2: Nostalgia, Immersive Engineering, Project Red, Forestry, Thaumcraft (not released yet). Others might work as well.</li>
 </ul>
-</p>
-<p><span style="font-size: 18px;"><strong>Ore Generation</strong><br /></span>
-<span style="font-size: 14px;">Other mods such as CoFH World will be needed to control the ore spawning. Sample configs are provided for CoFH World, check <a title="Netherending Ores CoFH World Ore Generation Configs" href="https://minecraft.curseforge.com/projects/netherending-ores-configs">here</a>. Extract the ore generation configs from the provided zip file to <strong>config\cofh\world\</strong> of your modpack instance in order to use them. Nether ore generation is based off config settings from the last release of the Nether Ores mod by skyboy026/powercrystals for MC 1.7.10. There are some minor changes, including adding ores that never existed in that mod. The End uses similar settings to the Nether but reduced size/count as the height range of naturally generated End Stone is far less.</span></p>
-<p><span style="font-size: 18px;"><strong>Recipes</strong><br /></span>
-<span style="font-size: 14px;">The furnace recipes to smelt the nether/end ores to the closest ore dictionary matching ore. The amount of ore block outputted varies based on the recipe multiplier in the config. Ores which do not originate in the Overworld, act like silk touched versions of their overworld ores recipe wise, this is done for balance but is reconfigurable.</span></p>
-<p><span style="font-size: 18px;"><strong>Machine Processing</strong><br /></span>
-<span style="font-size: 14px;">Basic recipes for Tinkers' Construct, Thermal Expansion, IC2, Mekanism and Immersive Engineering are available to directly process the ores. Thermal Expansion recipes have config settings that can compensate for augments improving balance. Integration can be disabled in the config if not wanted.</span></p>
-<span style="font-size: 18px;"><strong>Block List</strong><br /></span>
-<span style="font-size: 14px;">The following is a list of currently supported blocks, dimensions and ore graphics source.<br /></span>
+
+<h3>Nether Ore Hazards</h3>
+<p>Mining ores in the Nether isn't safe &mdash; that's the entire point! Breaking a Nether ore without Silk Touch triggers explosive reactions and angers nearby Zombified Piglins.</p>
 <ul>
-<li><strong>Coal | <span style="color: #ff0000;">Nether</span>/<span style="color: #800080;">End</span> | </strong>Vanilla</li>
-<li><strong>Diamond</strong> | <strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Vanilla</li>
-<li><strong>Emerald</strong> | <strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Vanilla</li>
-<li><strong>Gold</strong> | <strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Vanilla</li>
-<li><strong>Iron</strong> | <strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Vanilla</li>
-<li><strong>Lapis</strong> | <strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Vanilla</li>
-<li><strong>Redstone</strong> | <strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Vanilla</li>
-<li><strong>Quartz</strong> | <span style="color: #339966;"><strong>Overworld</strong></span>/<strong><span style="color: #800080;">End</span></strong> | Vanilla</li>
-<li><strong>Aluminum</strong> | <strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Thermal Foundation</li>
-<li><strong>Copper</strong> | <strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Thermal Foundation</li>
-<li><strong>Iridium</strong> | <strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Thermal Foundation</li>
-<li><strong>Lead</strong> | <strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Thermal Foundation</li>
-<li><strong>Mithril</strong> | <strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Thermal Foundation</li>
-<li><strong>Nickel</strong> | <strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Thermal Foundation</li>
-<li><strong>Platinum</strong> | <strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Thermal Foundation</li>
-<li><strong>Silver</strong> | <strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Thermal Foundation</li>
-<li><strong>Tin</strong> | <strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Thermal Foundation</li>
-<li><strong>Certus Quartz</strong> | <strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Applied Energistics</li>
-<li><strong>Charged Certus Quartz</strong> | <strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Applied Energistics</li>
-<li><strong>Osmium</strong> | <strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Mekanism</li>
-<li><strong>Uranium</strong> | <strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Original art (based off iron)</li>
-<li><strong>Yellorite</strong> | <strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Extreme Reactors</li>
-<li><strong>Zinc</strong> | <strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Railcraft</li>
-<li><strong>Dilithium</strong> | <strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Matter Overdrive</li>
-<li><strong>Tritanium</strong> | <strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Matter Overdrive</li>
-<li><strong>Ruby</strong> | <strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Project: Red</li>
-<li><strong>Sapphire</strong> | <strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Project: Red</li>
-<li><strong>Peridot</strong> | <strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Project: Red</li>
-<li><strong>Electrotine</strong> | <strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Project: Red</li>
-<li><strong>Ardite</strong> | <span style="color: #339966;"><strong>Overworld</strong></span>/<strong><span style="color: #800080;">End</span></strong> | Tinkers' Construct</li>
-<li><strong>Cobalt</strong> | <span style="color: #339966;"><strong>Overworld</strong></span>/<strong><span style="color: #800080;">End</span></strong> | Tinkers' Construct</li>
-<li><strong>Ambrosium</strong> | <span style="color: #339966;"><strong>Overworld</strong></span>/<strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Aether II</li>
-<li><strong>Gravitite</strong> | <span style="color: #339966;"><strong>Overworld</strong></span>/<strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Aether II</li>
-<li><strong>Zanite</strong> | <span style="color: #339966;"><strong>Overworld</strong></span>/<strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Aether II</li>
-<li><strong>Arkenium</strong> | <span style="color: #339966;"><strong>Overworld</strong></span>/<strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Aether II</li>
-<li><strong>Icestone</strong> | <span style="color: #339966;"><strong>Overworld</strong></span>/<strong><span style="color: #ff0000;">Nether</span></strong>/<strong><span style="color: #800080;">End</span></strong> | Aether II</li>
-<li><strong>Netherfish Monster Egg</strong> | <strong><span style="color: #ff0000;">Nether</span></strong> | Vanilla (disguised as Netherrack)</li>
-<li><strong>Endermite Monster Egg</strong> | <strong><span style="color: #800080;">End</span></strong> | Vanilla (disguised as End Stone)</li>
+    <li><strong>Zombified Piglin Aggro:</strong> Breaking ores without Silk Touch angers nearby Zombified Piglins through walls. Anger radius scales with difficulty: 12 blocks on Easy, 24 on Normal, 32 on Hard.</li>
+    <li><strong>Explosion Priming:</strong> Non-Silk Touch breaks have a chance to prime up to 26 adjacent Nether ores. Primed ores hiss like TNT and explode after 4 seconds (80 ticks).</li>
+    <li><strong>Chain Reactions:</strong> On Normal and Hard difficulties, an ore explosion can trigger adjacent ores, creating chaotic chain explosions!</li>
+    <li><strong>Silk Touch Safety:</strong> Using Silk Touch completely neutralizes both Piglin anger and explosion priming, safely defusing any already-primed ores.</li>
 </ul>
+
+<table>
+    <thead>
+        <tr>
+            <th>Difficulty</th>
+            <th>Piglin Anger Radius</th>
+            <th>Explosion Chance (per adjacent ore)</th>
+            <th>Explosion Power</th>
+            <th>Chain Reactions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Peaceful</td>
+            <td>Disabled</td>
+            <td>Disabled</td>
+            <td>&mdash;</td>
+            <td>&mdash;</td>
+        </tr>
+        <tr>
+            <td>Easy</td>
+            <td>12 Blocks</td>
+            <td>9.0%</td>
+            <td>Power 1</td>
+            <td>NO</td>
+        </tr>
+        <tr>
+            <td>Normal</td>
+            <td>24 Blocks</td>
+            <td>7.5%</td>
+            <td>Power 2</td>
+            <td>YES</td>
+        </tr>
+        <tr>
+            <td>Hard</td>
+            <td>32 Blocks</td>
+            <td>15.0%</td>
+            <td>Power 3</td>
+            <td>YES</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Important Distinction (Don't Bug Report Please)</h3>
+<p>This mod only affects Zombified Piglins. It does not control:</p>
+<ul>
+    <li><strong>Regular Piglins</strong> &mdash; these attack on sight if you are not wearing gold armor.</li>
+    <li><strong>Piglin Brutes</strong> &mdash; these attack on sight regardless.</li>
+    <li><strong>Vanilla Nether gold ore, gilded blackstone, and bastion chests</strong> &mdash; these anger Piglins through vanilla mechanics.</li>
+</ul>
+<p>If the mobs attacking you are regular Piglins or Brutes, that is vanilla behavior and not caused by this mod.</p>
+
+<h2>Requirements</h2>
+<ul>
+    <li><strong>Minecraft Version:</strong> 1.21.1</li>
+    <li><strong>Mod Loader:</strong> NeoForge 21.1.259 or newer (compatible across the 21.1.x series, tested up to 21.1.265)</li>
+</ul>
+
+<h2>Credits &amp; Licensing</h2>
+<p><strong>Code License:</strong> GNU LGPL v3.0 / GNU LGPL v2.1 (includes code components from Nether Foundation and IC2Magma).<br />
+Code was mostly rewritten but adapted where possible.</p>
